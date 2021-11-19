@@ -1,0 +1,66 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    height: 10vh;
+}
+
+header h1{
+    color:blueviolet;
+    font-size: 20px;
+    font-weight: lighter;
+    padding-left: 50px;
+}
+
+header p{
+    font-weight: bolder;
+    padding-right: 100px;
+}
+
+main div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:center;
+    height: 80vh;
+    padding-bottom: 100px;
+    /* margin: 5px; */
+    
+    
+}
+div h2{
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+div p{
+    margin : 0px 100px;
+}
+
+div button{
+    margin: 0;
+    height: 50px;
+    width: 150px;
+}
+
+
+footer{
+
+    display: flex;
+    height: 10vh;
+}
