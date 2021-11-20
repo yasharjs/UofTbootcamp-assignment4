@@ -13,6 +13,8 @@ body{
     
 }
 
+/* Header */
+
 header{
     display: flex;
     justify-content: space-between;
@@ -32,5 +34,77 @@ header p{
     font-weight: bolder;
     padding-right: 100px;
 }
+
+/* Basic layout */
+.start,
+.questions,
+.results{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0px 50px;
+    padding: 50px;
+}
+
+.btn-start,.start-text{
+    margin-top: 50px;
+}
+
+.start-title,.question-title,.results-title{
+    font-size: 2.1rem;
+}
+.start-text,.results-text{
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.btn-start{
+    font-size: 1.5rem;
+    color:#fff;
+    background-color: blueviolet;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px 10px 20px;
+    
+}
+
+button:hover{
+    background-color: pink;
+
+}
+
+/* Questions section */
+
+
+
+.questions{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    /* align-items: center; */
+    
+}
+
+.options-list{
+    border: solid 1px blue;
+    
+}
+.options-item{
+    font-size: 1.5rem;
+    color:#fff;
+    background-color: blueviolet;
+}
+
+
+.results{
+    /* display: none; */
+    
+}
+
+
+
 
 
