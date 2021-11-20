@@ -15,18 +15,39 @@
     </header>
 
     <main>
-        <div>
-            <h2>Coding Quiz Challenge</h2>
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button class="btn" type="submit">Submit</button>
-        </div>
+        <section class="start">
+            <h2 class="start-title">Coding Quiz Challenge</h2>
+            <p class="start-text">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <button class="btn-start" type="submit">Submit</button>
+        </section>
+
+        <section class="questions">
+            <div class="que">
+                <h2 class="que-text">Commonly used data types DO not include:</h2>
+            </div>
+
+            <div class ="options-text">
+                <ol class="options-list">
+                    <li class="options-item">Strings</li>
+                    <li class="options-item">booleans</li>
+                    <li class="options-item">alerts</li>
+                    <li class="options-item">numbers</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="results">
+            <h1 class="results-title">All Done!</h1>
+            <p class="results-text">Your final score is :</p>
+            <form class="results-form">
+                <label for="initials">Enter initials: </label>
+                <input type="text" placeholder="" name="initials" id="initials" class="initials">
+                <button type="submit">Submit</button>
+            </form>
+
+        </section>
      
     </main>
-
-    <footer>
-        &copy; 2022 by Yashar
-    </footer>
-
 
     <script src="./assets/js/script.js"></script>
     
