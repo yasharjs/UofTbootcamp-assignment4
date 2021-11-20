@@ -18,20 +18,18 @@
         <section class="start">
             <h2 class="start-title">Coding Quiz Challenge</h2>
             <p class="start-text">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button class="btn-start" type="submit">Submit</button>
+            <button class="btn btn-start" type="submit">Submit</button>
         </section>
 
         <section class="questions">
-            <d class="q-wrapper">
+            <div class="q-wrapper">
                 <h2 class="question-title">Commonly used data types DO not include:</h2>
-
-                <ol class="options-list">
-                    <li class="options-item">Strings</li>
-                    <li class="options-item">booleans</li>
-                    <li class="options-item">alerts</li>
-                    <li class="options-item">numbers</li>
-                </ol>
-                
+                <div class="options">
+                    <button class="btn btn-option" id="option-1">Strings</button>
+                    <button class="btn btn-option" id="option-2">Booleans</button>
+                    <button class="btn btn-option" id="option-3">Alerts</button>
+                    <button class="btn btn-option" id="option-4">Numbers</button>
+                </div>
             </div>
          
         </section>
@@ -39,11 +37,11 @@
         <section class="results">
             <h1 class="results-title">All Done!</h1>
             <p class="results-text">Your final score is :</p>
-            <form class="results-form">
+            <div class="results-form">
                 <label for="initials">Enter initials: </label>
                 <input type="text" placeholder="" name="initials" id="initials" class="initials">
-                <button type="submit">Submit</button>
-            </form>
+                <button class="btn btn-submit" type="submit">Submit</button>
+            </div>
 
         </section>
      

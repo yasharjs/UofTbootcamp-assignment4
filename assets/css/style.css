@@ -35,7 +35,7 @@ header p{
     padding-right: 100px;
 }
 
-/* Basic layout */
+/* Flex layout */
 .start,
 .questions,
 .results{
@@ -43,68 +43,95 @@ header p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     margin: 0px 50px;
-    padding: 50px;
+    padding: 40px;
+
 }
 
+/* Start Section */
 .btn-start,.start-text{
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
-.start-title,.question-title,.results-title{
+.start-title, .results-title{
     font-size: 2.1rem;
-}
-.start-text,.results-text{
-    font-size: 1.3rem;
     text-align: center;
 }
 
-.btn-start{
+.start-text, .results-text, label{
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 10px;
+    line-height: 1.9rem;
+}
+
+
+/* Questions section */
+.question-title{
+    /* text-align: start; */
+    font-size: 2.1rem;
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.btn-option{
+    margin: 7px 0px;
+    width: 220px;
+    text-align: start;
+
+}
+
+/* Results Section */
+
+.start, .questions{
+    /* display: none; */
+}
+
+.results{
+    align-items: flex-start; 
+    
+}
+.results-form{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+
+    
+}
+.initials{
+    height: 42px;
+    width: 50%;
+}
+.results-title{
+    margin-bottom: 0;
+}
+.results-text, label{
+    padding: 0;
+}
+
+
+
+/* Utilities */
+.btn-start, .btn-option ,.btn-submit{
     font-size: 1.5rem;
+    font-weight: lighter;
     color:#fff;
     background-color: blueviolet;
-    outline: none;
     border: none;
     border-radius: 12px;
-    padding: 10px 20px 10px 20px;
+    padding: 7px 20px;
     
 }
 
 button:hover{
     background-color: pink;
+    cursor: pointer;
 
 }
-
-/* Questions section */
-
-
-
-.questions{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid red;
-    /* align-items: center; */
-    
-}
-
-.options-list{
-    border: solid 1px blue;
-    
-}
-.options-item{
-    font-size: 1.5rem;
-    color:#fff;
-    background-color: blueviolet;
-}
-
-
-.results{
-    /* display: none; */
-    
-}
-
-
-
 
 
