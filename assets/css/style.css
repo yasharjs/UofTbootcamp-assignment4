@@ -87,8 +87,8 @@ header p{
 
 /* Results Section */
 
-.start, .questions{
-    /* display: none; */
+.results, .questions{
+    display: none;
 }
 
 .results{

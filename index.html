@@ -11,30 +11,29 @@
 <body>
     <header>
         <h1>View high scores</h1>
-        <p>Time: </p>
+        <p>Time: <span id="score"></span> </p>
     </header>
 
     <main>
-        <section class="start">
+        <section class="start" id="start">
             <h2 class="start-title">Coding Quiz Challenge</h2>
             <p class="start-text">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button class="btn btn-start" type="submit">Submit</button>
+            <button class="btn btn-start" id="btn-start" type="submit">Submit</button>
         </section>
 
-        <section class="questions">
+        <section class="questions" id="questions">
             <div class="q-wrapper">
-                <h2 class="question-title">Commonly used data types DO not include:</h2>
-                <div class="options">
-                    <button class="btn btn-option" id="option-1">Strings</button>
-                    <button class="btn btn-option" id="option-2">Booleans</button>
-                    <button class="btn btn-option" id="option-3">Alerts</button>
-                    <button class="btn btn-option" id="option-4">Numbers</button>
-                </div>
+                <h2 class="question-title" id="question-title"></h2>
+                <div class="options" id="options"></div>
+                    <!-- <button class="btn btn-option" id="a"></button>
+                    <button class="btn btn-option" id="b"></button>
+                    <button class="btn btn-option" id="c"></button>
+                    <button class="btn btn-option" id="d"></button> -->
             </div>
          
         </section>
 
-        <section class="results">
+        <section class="results" id="results">
             <h1 class="results-title">All Done!</h1>
             <p class="results-text">Your final score is :</p>
             <div class="results-form">
