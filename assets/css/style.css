@@ -80,16 +80,14 @@ header p{
 
 .btn-option{
     margin: 7px 0px;
-    width: 220px;
+    width: 250px;
     text-align: start;
 
 }
 
 /* Results Section */
 
-.results, .questions{
-    display: none;
-}
+
 
 .results{
     align-items: flex-start; 
@@ -132,6 +130,10 @@ button:hover{
     background-color: pink;
     cursor: pointer;
 
+}
+
+.results, .questions{
+    display: none;
 }
 
 
