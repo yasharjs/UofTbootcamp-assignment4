@@ -16,20 +16,13 @@ var deleteEl = document.querySelector("#delete");
 userInput.value = "";
 
 //initialize variables
-
-    
 var finalScore = 0;
 var queIndex = 0;
 var time =100;
 let questionArray;
+
+//get highscore from local storage, if empty then create an array
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-// console.log(highScores);
-   
-
-
-
-
-
 
 //initialize list of questions
 let myQuestions = [
@@ -89,49 +82,43 @@ let myQuestions = [
 ]
 
 var start = function(){
-    
+    //randomize the order of the questions
     questionArray =  myQuestions.sort(() => Math.random() - .5);
+
     //start timer
     var myTimer = setInterval(function(){
-        
         userScore.textContent = time;
         time--;
         if(time <= 0){
             clearInterval(myTimer);
             userScore.textContent = "";
+
+            //hide quesstion section and display results section
             questionSection.setAttribute("style","display:none");
             endGame.setAttribute("style","display: flex");
+
+            //time has ended before completion of quiz
             if(queIndex < myQuestions.length){
                 userScore.textContent = "0";
-                //displayScore(userScore.textContent);
-                console.log("clear2");
             }
-         //  gameOver();
         }
     },1000);
-
-
 
     //hide start section and display questions section
     startSection.setAttribute("style","display:none");
     questionSection.setAttribute("style","display: flex");
     
-    
-
     //create question
     createQue();
-
-
 }
+
 var createQue = function(){
-    //reset answer info and options div
-   // feedbackText.textContent = "";
+    //reset option div for new set of questions
     optionDiv.innerHTML = "";
 
     //set h2 content to current question
     questionText.textContent = myQuestions[queIndex].question;
   
-
     var i = 1;
     //create answer buttons by looping through the answers array
     for (letter in myQuestions[queIndex].answers){
@@ -147,16 +134,15 @@ var createQue = function(){
 var checkAnswer = function(event){
     var targetId = event.target.getAttribute("data-value");
   
-   // btnForm.removeEventListener();
-   
+    //if a value is returned then a button was clicked
    if (targetId){
 
    //correct answer
    if(targetId === questionArray[queIndex].correctAnswer){
     queIndex ++;
     feedbackText.textContent = "correct";
+    //no more questions left 
     if(queIndex >= questionArray.length){
-        // call game over function
         finalScore = time;
         gameOver();
     }
@@ -167,20 +153,20 @@ var checkAnswer = function(event){
 
     }
     else{
-        if(time > 5){
+        //check to make sure time doesnt equal a negative number 
+        if(time > 10){
             time -=10;
             userScore.textContent = time;
-              queIndex++;
-             feedbackText.textContent = "Wrong";
-             if(queIndex >= questionArray.length){
-                 finalScore = time;
+            queIndex++;
+            feedbackText.textContent = "Wrong";
+            //no more questions left
+            if(queIndex >= questionArray.length){
+                finalScore = time;
                 gameOver();
             }
             else{
                 createQue();
-                
             }
-
         }
         else{
             gameOver();
@@ -193,19 +179,17 @@ var checkAnswer = function(event){
     
 }
 var displayScore = function(score){
-
-  // console.log("displayScore: ", userScore.textContent);
   scoreText.textContent += score;
-
 }
 var gameOver = function(){
     displayScore(finalScore);
+    //end the game by seting the value of time to 0 so the interval can stop
     time = 0;
-
 }
 var displayHighscores = function(){
     endGame.setAttribute("style","display:none")
     scoreList.setAttribute("style","display: flex");
+
     var listEl = document.createElement("ul");
     var index = 1;
     for(var i = 0; i < highScores.length; i++){
@@ -218,45 +202,43 @@ var displayHighscores = function(){
 
 }
 var saveScore = function(event){
-    event.preventDefault();
-    console.log(finalScore);
-  
+    event.preventDefault();  
     if(!userInput.value){
         alert("Please enter initials!");
     }
     else{
+        //create object to store the user score and initial
         const score = {
             score : finalScore,
             initials : userInput.value
         }
-        console.log("score ",score.score);
-        console.log("initials ",score.initials);
+        
+        //push score object to highScore array
         highScores.push(score);
+        //sort array based on highest to lowest score
         highScores.sort((a,b) => b.score - a.score);
+        //limit highscore to top 5
         highScores.splice(5);
+
+        //save highscore to local storage
         localStorage.setItem("highScores",JSON.stringify(highScores));
         
         displayHighscores();
         
         
-    }
-  
-    
+    }  
 }
 
 var resetQuiz = function(){
-    console.log("its being clicked");
+   //reload the page
     location.reload();
 }
 
 var deleteHighscore = function(){
+    //reset values
     highscoreList.innerHTML = "";
     localStorage.clear();
-    console.log("delete");
 }
-
-
-
 
 btnStart.addEventListener("click",start);
 optionDiv.addEventListener("click",checkAnswer);
