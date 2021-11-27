@@ -11,20 +11,21 @@
 <body>
     <header>
         <h1>View high scores</h1>
-        <p>Time: <span id="score"></span> </p>
+        <p>Time: <span id="score">0</span></p>
     </header>
 
     <main>
         <section class="start" id="start">
             <h2 class="start-title">Coding Quiz Challenge</h2>
             <p class="start-text">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-            <button class="btn btn-start" id="btn-start" type="submit">Submit</button>
+            <button class="btn btn-start" id="btn-start" type="submit">Start</button>
         </section>
 
         <section class="questions" id="questions">
             <div class="q-wrapper">
                 <h2 class="question-title" id="question-title"></h2>
                 <div class="options" id="options"> </div>
+                <p id="answer-text"></p>
             </div>
          
         </section>
@@ -32,12 +33,25 @@
         <section class="results" id="results">
             <h1 class="results-title">All Done!</h1>
             <p class="results-text" id="results-text">Your final score is : </p>
-            <div class="results-form">
+            <form class="results-form" id="results-form">
                 <label for="initials">Enter initials: </label>
                 <input type="text" placeholder="" name="initials" id="initials" class="initials">
-                <button class="btn btn-submit" type="submit">Submit</button>
-            </div>
+                <button class="btn btn-submit" id="btn-submit"type="submit">Submit</button>
+            </form>
 
+        </section>
+
+        <section class="score-list" id="score-list">
+            <div class="wrapper" id="wrapper">
+                <h2 class="start-title">High scores:</h2>
+                <div id="highscore-list"></div>
+                 <div class="input">
+                    <button class="btn btn-submit"id="reset">Restart</button>
+                    <button class="btn btn-submit" id="delete">Clear high scores</button>
+                 </div>
+          
+            </div>
+            
         </section>
      
     </main>
