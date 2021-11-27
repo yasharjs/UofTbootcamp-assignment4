@@ -13,13 +13,16 @@ var highscoreList = document.querySelector("#highscore-list");
 var userInput = document.querySelector("#initials");
 var resetEl = document.querySelector("#reset");
 var deleteEl = document.querySelector("#delete");
-userInput.value = "";
+var viewHighscore = document.querySelector("#view-highscore");
+
 
 //initialize variables
 var finalScore = 0;
 var queIndex = 0;
 var time =100;
 let questionArray;
+userInput.value = "";
+var skipped = false;
 
 //get highscore from local storage, if empty then create an array
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -81,6 +84,7 @@ let myQuestions = [
     
 ]
 
+//functions
 var start = function(){
     //randomize the order of the questions
     questionArray =  myQuestions.sort(() => Math.random() - .5);
@@ -89,10 +93,9 @@ var start = function(){
     var myTimer = setInterval(function(){
         userScore.textContent = time;
         time--;
-        if(time <= 0){
+        if(time <= 0 && skipped === false){
             clearInterval(myTimer);
             userScore.textContent = "";
-
             //hide quesstion section and display results section
             questionSection.setAttribute("style","display:none");
             endGame.setAttribute("style","display: flex");
@@ -102,6 +105,14 @@ var start = function(){
                 userScore.textContent = "0";
             }
         }
+        if(time <= 0 && skipped === true){
+            clearInterval(myTimer);
+            userScore.textContent = "";
+            displayHighscores();
+
+        }
+        
+        
     },1000);
 
     //hide start section and display questions section
@@ -111,7 +122,6 @@ var start = function(){
     //create question
     createQue();
 }
-
 var createQue = function(){
     //reset option div for new set of questions
     optionDiv.innerHTML = "";
@@ -187,18 +197,29 @@ var gameOver = function(){
     time = 0;
 }
 var displayHighscores = function(){
-    endGame.setAttribute("style","display:none")
-    scoreList.setAttribute("style","display: flex");
-
-    var listEl = document.createElement("ul");
-    var index = 1;
-    for(var i = 0; i < highScores.length; i++){
-        var listItemEl = document.createElement("li")
-        listItemEl.textContent = index +". " +highScores[i].initials + " - " +highScores[i].score;
-        listEl.appendChild(listItemEl);
-        index++;
+    if (time > 0){
+        time =0;
+        skipped = true;
     }
-    highscoreList.appendChild(listEl);
+    else{
+        endGame.setAttribute("style","display:none")
+        startSection.setAttribute("style","display:none");
+        questionSection.setAttribute("style","display:none");
+        scoreList.setAttribute("style","display: flex");
+    
+        var listEl = document.createElement("ul");
+        var index = 1;
+        for(var i = 0; i < highScores.length; i++){
+            var listItemEl = document.createElement("li")
+            listItemEl.textContent = index +". " +highScores[i].initials + " - " +highScores[i].score;
+            listEl.appendChild(listItemEl);
+            index++;
+        }
+        highscoreList.appendChild(listEl);
+    }
+ 
+
+    
 
 }
 var saveScore = function(event){
@@ -228,21 +249,22 @@ var saveScore = function(event){
         
     }  
 }
-
 var resetQuiz = function(){
    //reload the page
     location.reload();
 }
-
 var deleteHighscore = function(){
     //reset values
     highscoreList.innerHTML = "";
     localStorage.clear();
 }
 
+
+//Event listeners 
 btnStart.addEventListener("click",start);
 optionDiv.addEventListener("click",checkAnswer);
 btnForm.addEventListener("submit",saveScore);
 resetEl.addEventListener("click", resetQuiz);
 deleteEl.addEventListener("click",deleteHighscore);
+viewHighscore.addEventListener("click",displayHighscores);
 
